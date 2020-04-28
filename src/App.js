@@ -2,7 +2,7 @@ import React from 'react';
 import useFetch from "./useFetch";
 const App = ()=>{
   const { loading, error, data } = useFetch("https://jsonplaceholder.typicode.com/posts");
-  if(error) return (<div> Error. ${error}</div>)
+  if(error) return (<div> Error. {error}</div>)
   if(loading) return (<div>Loading...</div>)
   if(data) return (
     <ul>
@@ -11,7 +11,7 @@ const App = ()=>{
   )
   //It should never get here
   return (
-    <div>Use Fetch</div>
+    <div>Please Wait</div>
   )
 }
 

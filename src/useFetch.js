@@ -9,8 +9,17 @@ const useFetch = (url) => {
             try {
                 setLoading(true);
                 fetch(url)
-                .then(response=>response.json())
-                .then(r=>setData(r))
+                .then(response=>{
+                    if(response.status === 200){
+                       return response.json()
+                    } else {
+                        setError(response.status)
+                    }
+                })
+                .then(r=>{
+                    console.log(r)
+                    setData(r)
+                })
             } catch (error) {
                 setError(error);
                //throw error;
