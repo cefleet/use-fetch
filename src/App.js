@@ -1,26 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import useFetch from "./ueFetch";
+const App = ()=>{
+  const { loading, error, data } = useFetch("https://jsonplaceholder.typicode.com/posts");
+  if(error) return (<div> Error. ${error}</div>)
+  if(loading) return (<div>Loading...</div>)
+  if(data) return (
+    <ul>
+      {data.map(d=><li key={d.id}>{d.id} - {d.title}</li>)}
+    </ul>
+  )
+  //It should never get here
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div>Use Fetch</div>
+  )
 }
 
 export default App;
