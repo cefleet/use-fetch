@@ -1,5 +1,5 @@
 import React from 'react';
-import useFetch from "./ueFetch";
+import useFetch from "./useFetch";
 const App = ()=>{
   const { loading, error, data } = useFetch("https://jsonplaceholder.typicode.com/posts");
   if(error) return (<div> Error. ${error}</div>)
